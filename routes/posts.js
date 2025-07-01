@@ -89,8 +89,22 @@ router.patch('/:id', (req, res)=>{
 
 //delete
 router.delete('/:id', (req, res)=>{
-  const id= (req.params.id)
-  res.send(`Delete post with id:${id}`)
+  const id = parseInt(req.params.id)
+  const post = posts.find(posts => posts.id === id);
+  if(!post){
+    res.status(404)
+
+    return res.json({
+      
+      message:"Post non trovato"
+
+    })
+  }
+  posts.splice(posts.indexOf(post),1)
+
+  console.log(posts)
+
+  res.sendStatus(204)
 })
 
 
