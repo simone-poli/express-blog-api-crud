@@ -52,7 +52,13 @@ const posts = [
 
 //index
 router.get('/', (req, res)=>{
-  res.json(posts)
+  let filteredpost = posts;
+
+  if(req.query.tags){
+    filteredpost = posts.filter(post => post.tags.includes(req.query.tags)
+);
+  }
+  res.json(filteredpost)
 })
 
 //show
