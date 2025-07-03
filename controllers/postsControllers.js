@@ -12,7 +12,7 @@ function index (req, res){
 }
 
 function show (req, res){
-  const id = parseInt(req.params.id)
+  const id = Number(req.params.id)
   const post = posts.find(posts => posts.id === id);
   if(!post){
     res.status(404)
@@ -62,6 +62,7 @@ function update (req,res){
 
     res.json(post)
 }
+
 function modify (req,res){
     const id = Number(req.params.id)
 
@@ -85,7 +86,7 @@ function modify (req,res){
 }
 
 function destroy (req, res){
-  const id = parseInt(req.params.id)
+  const id = Number(req.params.id)
   const post = posts.find(posts => posts.id === id);
   if(!post){
     res.status(404)
